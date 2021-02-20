@@ -1,34 +1,41 @@
-import * as UserModel from '../model/userModel.js';
+const UserModel = require('../model/userModel.js');
 
 
-export async function userForm(req, res, next) {
-// const userForm = (req, res, next) => {
+ async function userForm(req, res, next) {
     let name = req.body.name;
     let dob = req.body.dob;
     let email = req.body.email;
     let phone = req.body.phone;
-
     let user;
 
     try {
-        user = await UserModel.save({
+        user = await UserModel({
             name,
             dob,
             email,
             phone
         });
-
-        res.status(200).json({ success : true, user : user })
+        user.save()
+        return res.status(200).json({ success : true, user });
     } catch (error) {
-        return res.status(400).json({ success : false, error : error})
+        console.log(error);
+        return res.status(400).json({ success : false, error : error.message });
     }
 
 }
 
-// export async function random(req, res, next) {
-//     res.success('random')
-// }
+async function submittedForms(req, res, next) {
+    try {
+        let forms = await UserModel.find();
+        return res.status(200).json({ success : true, forms })
+    } catch (error) {
+        return res.status(400).json({ success : false, error : error.message })
+    }
+}
 
-// export default {
-//     userForm
-// }
+
+
+module.exports = {
+    userForm, 
+    submittedForms
+}
