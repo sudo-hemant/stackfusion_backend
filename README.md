@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Steps to run backend server
 
 ```sh
@@ -20,3 +21,7 @@ $ npm start
 ```
 
 This will run a client server on localhost:3000.
+=======
+# stackfusion_backend
+Backend code (Node.js) of assignment of stackfusion.
+>>>>>>> 6bfe22c0f84d22eaa6fa9bb3029dfeb7492ead5c
