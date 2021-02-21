@@ -8,6 +8,11 @@ async function userForm(req, res, next) {
     const { name, dob, email, phone } = req.body
     let user;
 
+    if (phone.length !== 10) {
+        console.log('invalid phone no')
+        return res.status(400).json({ success : false, error : 'invalid phone no'});
+    }
+
     try {
         user = await UserModel({
             name,
@@ -15,18 +20,15 @@ async function userForm(req, res, next) {
             email,
             phone
         });
-        console.log('user', user, 'user')
         user.save()
 
         let html = `
             Your form is submitted.
         `
-        
         sendMail(user.email, "Form submitted", html);
 
         return res.status(200).json({ success: true, user });
     } catch (error) {
-        console.log(error);
         return res.status(400).json({ success: false, error: error.message });
     }
 }
