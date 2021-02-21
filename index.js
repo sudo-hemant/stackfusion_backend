@@ -25,7 +25,6 @@ app.use(cors());
 /**
  * Router Middleware
  * Router - /user/*
- * * Router - /teacher/*
  * Method - *
  */
 app.use("/user", userRoute);

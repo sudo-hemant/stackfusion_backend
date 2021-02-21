@@ -12,7 +12,7 @@ const InitiateMongoServer = async () => {
       useUnifiedTopology: true,
     });
     mongoose.set("useFindAndModify", false);
-    console.log("Connected to DB !!");
+    console.log("Connected to DATABASE !!");
   } catch (e) {
     console.log(e);
     throw e;

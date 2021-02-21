@@ -1,5 +1,5 @@
 const UserModel = require('../model/userModel.js');
-const sendMail = require('../services/mailer.js');
+const { sendMail } = require('../services/mailer.js');
 // const { publishToQueue } = require('../services/MQService.js')
 
 
@@ -51,5 +51,5 @@ async function submittedForms(req, res, next) {
 module.exports = {
     userForm,
     submittedForms,
-    messageQueue
+    // messageQueue
 }
